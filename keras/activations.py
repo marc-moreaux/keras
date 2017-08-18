@@ -105,3 +105,16 @@ def get(identifier):
     else:
         raise ValueError('Could not interpret '
                          'activation function identifier:', identifier)
+
+
+def tanh_perso(x):
+    alpha = 1.7580993408473768599402175208123
+    sign = K.sign(x)
+    return - sign * alpha * (K.exp(sign * (-x)) - 1)
+
+
+def sig_perso(x):
+    alpha = 1.7580993408473768599402175208123
+    x = x - alpha  # shift is important !
+    sign = K.sign(x)
+    return - sign * alpha * (K.exp(sign * (-x)) - 1) + alpha
